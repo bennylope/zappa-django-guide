@@ -14,7 +14,7 @@ But basically you will need the private subnet or subnets which can access the d
 
 ### Use AWS RDS
 
-This is probably the easiest to get up and running.  AWS takes care of the messy details of managing the host and provides database-as-a-service (if that's a real thing).  In addition, AWS RDS supports mySQL and PostGreSQL, both which are highly compatible with Django.  
+This is probably the easiest to get up and running.  AWS takes care of the messy details of managing the host and provides database-as-a-service (if that's a real thing).  In addition, AWS RDS supports mySQL and PostgreSQL, both which are highly compatible with Django.  
 
 ### Host Your Own
 
@@ -26,7 +26,7 @@ There as some other database services such as DynamoDB.  Depending on the capabi
 
 ## Create your RDS Database
 
-We'll just focus on the RDS case for this walkthough.  In fact we'll go through the walkthough using PostGreSQL.
+We'll just focus on the RDS case for this walkthough.  In fact we'll go through the walkthough using PostgreSQL.
 
 So zip on over to [Creating an RDS Database](aws_database.md) and set up one.  You should record some key information we'll need here:
 
@@ -67,7 +67,7 @@ db name | zappadbname
 
 ### Edit requirements 
 
-Note on PostGreSQL: because the psycopg2 library often involves compiling the library, I would suggest using the [Docker version of zappa](setup.md#approach-2-docker-with-zappa) to ensure you have isolation of environments and you don't mess up your local system.
+Note on PostgreSQL: because the psycopg2 library often involves compiling the library, I would suggest using the [Docker version of zappa](setup.md#approach-2-docker-with-zappa) to ensure you have isolation of environments and you don't mess up your local system.
 
 Add this to your requirements.txt 
 ```sh
@@ -122,7 +122,7 @@ Now we add the VPC configuration to our Zappa settings file so that the lambda f
 Ok, easy so far?  Yes!  All we had to do up to this point was carefully click a mouse in the AWS console and 
 edit some text files.  Well fun time is over - now we run into some bootstrapping problems.  Fortunately, we only have to do this once each time we need a new database.
 
-Turns out that when AWS creates a PostGreSQL RDS instance for you, it doesn't create a database.  So you have to do it yourself.  There are many options, but two methods could be:
+Turns out that when AWS creates a PostgreSQL RDS instance for you, it doesn't create a database.  So you have to do it yourself.  There are many options, but two methods could be:
 
 1. Use a db tool on your local machine via a bastion host 
 2. Use the AWS command line tool
